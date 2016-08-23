@@ -1,0 +1,51 @@
+package ua.nure.selin.SummaryTask4.db.entity;
+
+import ua.nure.selin.SummaryTask4.db.status.OrderStatus;
+
+/**
+ * Order entity.
+ * 
+ * @author B.Selin
+ *
+ */
+public class Order extends Entity {
+
+	private static final long serialVersionUID = 5402852709839806288L;
+
+	private int userId;
+
+	private OrderStatus status;
+
+	private int totalPrice;
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id: " + getId() + ", userId: " + userId + ", status: " + status + ", totalPrice: " + totalPrice
+				+ "]";
+	}
+
+}
