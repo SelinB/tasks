@@ -15,7 +15,7 @@ import ua.nure.selin.SummaryTask4.db.util.DBUtil;
 import ua.nure.selin.SummaryTask4.exception.AppException;
 
 /**
- * Command that processing registration operation.
+ * Command that processes the registration operation.
  * 
  * @author B.Selin
  *

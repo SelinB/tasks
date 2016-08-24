@@ -7,6 +7,9 @@ import ua.nure.selin.SummaryTask4.constant.Path;
 import ua.nure.selin.SummaryTask4.exception.AppException;
 
 /**
+ * Displays adding a user to a database operation. Part of PRG pattern - secures
+ * from forms resubmit.
+ * 
  * @author B.Selin
  *
  */

@@ -1,0 +1,12 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+<p>
+	Items in cart:
+	<c:if test="${empty orderItems}">
+	0
+</c:if>
+	${orderItems.size()}
+</p>
+<p>Total price: ${cart.getTotalPrice()}</p>
+</html>

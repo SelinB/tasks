@@ -18,52 +18,37 @@
 			<input type="hidden" name="command" value="processRegistrarion">
 			<table>
 				<tr>
-					<th>Login:</th>
+					<td><label for="login">Login:</label><br> <input
+						name="login" /></td>
 				</tr>
 				<tr>
-					<td><input name="login" /></td>
+					<td><label for="email">Email:</label> <br> <input
+						name="email" /></td>
 				</tr>
 				<tr>
-					<th>Email:</th>
+					<td><label for="password">Password:</label><br> <input
+						name="password" /></td>
 				</tr>
 				<tr>
-					<td><input name="email" /></td>
+					<td><label for="firstName">First name:</label><br> <input
+						name="firstName" /></td>
 				</tr>
 				<tr>
-					<th>Password:</th>
+					<td><label for="lastName">Last name:</label><br> <input
+						name="lastName" /></td>
 				</tr>
 				<tr>
-					<td><input name="password" /></td>
+					<td><label for="phone">Phone:</label><br> <input
+						name="phone" /></td>
 				</tr>
 				<tr>
-					<th>First name:</th>
+					<td><label for="address">Address:</label><br> <input
+						name="address" /></td>
 				</tr>
 				<tr>
-					<td><input name="firstName" /></td>
-				</tr>
-				<tr>
-					<th>Last name:</th>
-				</tr>
-				<tr>
-					<td><input name="lastName" /></td>
-				</tr>
-				<tr>
-					<th>Phone:</th>
-				</tr>
-				<tr>
-					<td><input name="phone" /></td>
-				</tr>
-				<tr>
-					<th>Address:</th>
-				</tr>
-				<tr>
-					<td><input name="address" /></td>
-				</tr>
-				<tr>
-					<th>Gender:</th>
-				</tr>
-				<tr>
-					<td><input name="gender" /></td>
+					<td><label for="gender">Gender:</label><br> <input
+						type="radio" name="gender" value="male" />Male<br>
+					<input type="radio" name="gender" value="female" />Female</td>
 				</tr>
 			</table>
 			<br> <input type="submit" value="Register">

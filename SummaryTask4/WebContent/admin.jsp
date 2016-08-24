@@ -15,40 +15,40 @@
 			<table>
 				<caption>Add products to database:</caption>
 				<tr>
-					<td><label for="name">Product name:</label> <input name="name">
-					</td>
+					<td><label for="name">Product name:</label> <br> <input
+						name="name"></td>
 				</tr>
 				<tr>
-					<td><label for="price">Product price:</label> <input
+					<td><label for="price">Product price:</label> <br> <input
 						name="price"></td>
 				</tr>
 				<tr>
-					<td><label for="stock">Product stock:</label> <input
+					<td><label for="stock">Product stock:</label> <br> <input
 						name="stock"></td>
 				</tr>
 				<tr>
-					<td><label for="date"></label> Manufacturing date: <input
+					<td><label for="date"> Manufacturing date:</label> <br> <input
 						name="date"></td>
 				</tr>
 				<tr>
-					<td><label for="size">Product size:</label> <input name="size">
-					</td>
+					<td><label for="size">Product size:</label> <br> <input
+						name="size"></td>
 				</tr>
 				<tr>
-					<td><label for="color">Product color:</label> <input
+					<td><label for="color">Product color:</label> <br> <input
 						name="color"></td>
 				</tr>
 				<tr>
-					<td><label for="image">Image source:</label><input
+					<td><label for="image">Image source:</label> <br> <input
 						name="image"></td>
 				</tr>
 				<tr>
 					<td><label for="description">Description of a product:</label>
-						<input name="description"></td>
+						<br> <input name="description"></td>
 				</tr>
 				<tr>
-					<td><label for="category">Product category: </label><input
-						name="category"></td>
+					<td><label for="category">Product category: </label> <br>
+						<input name="category"></td>
 				</tr>
 			</table>
 			<input type="submit" value="Add">

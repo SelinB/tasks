@@ -70,6 +70,12 @@
 						<td>${product.getSize()}</td>
 						<td>${product.getColor()}</td>
 						<td>${product.getDescription()}</td>
+						<td></td>
+						<td><c:if test="${not empty product.getStock()}">
+								<a
+									href="controller?command=processAddToCart&productId=${product.getId()}&currentCategory=${currentCategory}&userId=${user.getId()}">Add
+									to cart</a>
+							</c:if> <c:if test="${empty product.getStock()}">There are no any products left in stock :(</c:if></td>
 					</tr>
 				</c:forEach>
 			</table>

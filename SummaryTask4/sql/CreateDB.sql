@@ -55,8 +55,8 @@ FOREIGN KEY (category_id) REFERENCES categories (id)
 
 CREATE TABLE orders(
 id INT NOT NULL AUTO_INCREMENT,
-status VARCHAR(255) NOT NULL,
-total_price INT NOT NULL,
+status VARCHAR(255) NOT NULL DEFAULT 'PROCESSING',
+total_price INT NOT NULL DEFAULT 0,
 user_id INT NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users (id)

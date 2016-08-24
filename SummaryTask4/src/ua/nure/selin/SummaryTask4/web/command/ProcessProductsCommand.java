@@ -21,7 +21,7 @@ import ua.nure.selin.SummaryTask4.db.util.DBUtil;
 import ua.nure.selin.SummaryTask4.exception.AppException;
 
 /**
- * Command that displays to a user all products from a database.
+ * Command that process and displays to a user all products from a database.
  * 
  * @author B.Selin
  *
@@ -39,7 +39,7 @@ public class ProcessProductsCommand extends Command {
 	public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
 
 		LOG.debug(Messages.SUCCESS_COMMAND_STARTED + getClass().getSimpleName());
-
+	
 		CommandResult result = new CommandResult(Path.SHOP_PAGE);
 		result.setTransitionForward();
 

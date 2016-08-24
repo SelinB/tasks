@@ -13,7 +13,7 @@ import ua.nure.selin.SummaryTask4.exception.DBException;
  *
  */
 public interface UserDAO {
-	
+
 	/**
 	 * Finds user in a database by its login.
 	 * 
@@ -44,4 +44,15 @@ public interface UserDAO {
 	 * @throws DBException
 	 */
 	public boolean addUser(User user) throws DBException;
+
+	/**
+	 * Updates a user in database.
+	 * 
+	 * @param user
+	 *            to update.
+	 * @return <b>true</b> if user has been successfully updated or <b>false</b>
+	 *         if not.
+	 * @throws DBException
+	 */
+	public boolean updateUser(User user) throws DBException;
 }

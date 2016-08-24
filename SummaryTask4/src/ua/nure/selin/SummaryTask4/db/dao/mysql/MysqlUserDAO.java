@@ -22,6 +22,9 @@ import ua.nure.selin.SummaryTask4.exception.DBException;
  */
 public class MysqlUserDAO implements UserDAO {
 
+	/**
+	 * Apache Log4j logger
+	 */
 	private static final Logger LOG = Logger.getLogger(MysqlUserDAO.class);
 
 	public MysqlUserDAO() {
@@ -53,9 +56,38 @@ public class MysqlUserDAO implements UserDAO {
 	}
 
 	@Override
+	public boolean updateUser(User user) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		int counter = 1;
+		boolean result = false;
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_UPDATE_USER);
+			pstmt.setString(counter++, user.getLogin());
+			pstmt.setString(counter++, user.getPassword());
+			pstmt.setString(counter++, user.getEmail());
+			pstmt.setString(counter++, user.getFirstName());
+			pstmt.setString(counter++, user.getLastName());
+			pstmt.setString(counter++, user.getPhone());
+			pstmt.setString(counter++, user.getAddress());
+			pstmt.setString(counter++, user.getGender());
+			pstmt.setString(counter++, String.valueOf(user.getStatus()));
+			pstmt.setInt(counter++, user.getCurrentOrderId());
+			pstmt.setInt(counter++, user.getId());
+			pstmt.executeUpdate();
+			con.commit();
+			result = true;
+		} catch (SQLException e) {
+			DBUtil.rollBack(con);
+			LOG.error(Messages.ERR_CANNOT_UPDATE_USER, e);
+			throw new DBException(Messages.ERR_CANNOT_UPDATE_USER, e);
+		}
+		return result;
+	}
+
+	@Override
 	public boolean addUser(User user) throws DBException {
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		int counter = 1;
 		boolean result = false;

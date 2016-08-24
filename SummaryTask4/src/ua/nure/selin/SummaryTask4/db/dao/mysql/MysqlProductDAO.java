@@ -38,7 +38,6 @@ public class MysqlProductDAO implements ProductDAO {
 	@Override
 	public Product findProductByName(String name) throws DBException {
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Product product = null;
@@ -64,7 +63,6 @@ public class MysqlProductDAO implements ProductDAO {
 	@Override
 	public Product findProductById(int id) throws DBException {
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Product product = null;
@@ -89,7 +87,6 @@ public class MysqlProductDAO implements ProductDAO {
 	@Override
 	public Product findProductByCategoryId(int categoryId) throws DBException {
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Product product = null;
@@ -115,7 +112,6 @@ public class MysqlProductDAO implements ProductDAO {
 	public List<Product> getAllProducts() throws DBException {
 		List<Product> productsList = new ArrayList<Product>();
 		Connection con = DBUtil.getConnection();
-		;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
@@ -140,7 +136,6 @@ public class MysqlProductDAO implements ProductDAO {
 	public List<Product> getAllProductsByCategoryId(int categoryId) throws DBException {
 		List<Product> productsList = new ArrayList<Product>();
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -181,7 +176,6 @@ public class MysqlProductDAO implements ProductDAO {
 	@Override
 	public boolean addProduct(Product product) throws DBException {
 		Connection con = DBUtil.getConnection();
-		;
 		PreparedStatement pstmt = null;
 		int counter = 1;
 		boolean result = false;

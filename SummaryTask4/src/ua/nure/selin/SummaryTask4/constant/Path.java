@@ -20,6 +20,9 @@ public final class Path {
 	public static final String REGISTRATION_SUCCESS = "registrarionSuccess.jsp";
 
 	// Commands
+	public static final String COMMAND_ADD_TO_CART_NOT_AUTHORIZED = "controller?command=processCartNotAuthorized";
+	public static final String COMMAND_ADD_TO_CART_AUTHORIZED = "controller?command=processCartAuthorized";
+	public static final String COMMAND_VIEW_ADD_TO_CART = "controller?command=viewAddToCart";
 	public static final String COMMAND_VIEW_ADD_PRODUCT = "controller?command=viewAddProduct";
 	public static final String COMMAND_VIEW_LOGIN = "controller?command=viewLogin";
 	public static final String COMMAND_VIEW_REGISTRARION = "controller?command=viewRegistration";

@@ -31,6 +31,10 @@ public class CommandContainer {
 	 */
 	static {
 		// PUT COMMANDS HERE
+		commands.put("viewAddToCart", new ViewAddToCartCommand());
+		commands.put("processAddToCart", new ProcessAddToCartCommand());
+		commands.put("processCartNotAuthorized", new ProcessAddToCartNotAuthorizedCommand());
+		commands.put("processCartAuthorized", new ProcessAddToCartAuthorizedCommand());
 		commands.put("processLogin", new ProcessLoginCommand());
 		commands.put("viewLogin", new ViewLoginCommand());
 		commands.put("processLogout", new ProcessLogoutCommand());

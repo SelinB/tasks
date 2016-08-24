@@ -31,6 +31,10 @@ public final class Messages {
 	public static final String SUCCESS_CONNECTION_ROLLED_BACK = "Connection has been rolled back";
 
 	// Error messages
+	public static final String ERR_CANNOT_UPDATE_ORDER= "Cannot update a order";
+	public static final String ERR_CANNOT_UPDATE_USER = "Cannot update a user";
+	public static final String ERR_CANNOT_FIND_ORDER_BY_STATUS_AND_SUER_ID = "Cannot find an order by its status and user id";
+	public static final String ERR_CANNOT_INSERT_ORDER = "Cannot add an order to a database";
 	public static final String ERR_METHOD_NOT_DEFINED = "Transition method is not defined";
 	public static final String ERR_CANOT_FIND_CATEGORY_BY_NAME = "Cannot find a category by its name";
 	public static final String ERR_CANOT_FIND_CATEGORY_BY_ID = "Cannot find a category by its id";
@@ -42,6 +46,7 @@ public final class Messages {
 	public static final String ERR_CANOT_FIND_PRODUCT_BY_ID = "Cannot find a product by its id";
 	public static final String ERR_CANOT_FIND_PRODUCT_BY_CATEGORY_ID = "Cannot find a product by its category id";
 	public static final String ERR_CANNOT_CREATE_USER = "Cannot add a user to a database";
+	public static final String ERR_CANNOT_ADD_ORDER_ITEM = "Cannot add orderItem to a database";
 	public static final String ERR_CANNOT_OBTAIN_USER_BY_LOGIN = "Cannot find a user by its login";
 	public static final String ERR_CANNOT_FIND_COMMAND = "Cannot find such command in the ComandContainer: ";
 	public static final String ERR_CANNOT_OBTAIN_CONNECTION = "Cannot obtain a connection from the pool";
@@ -52,8 +57,10 @@ public final class Messages {
 	public static final String ERR_CANNOT_CLOSE_STATEMENT = "Cannot close a statement";
 	public static final String ERR_CANNOT_ROLL_BACK_CONNECTION = "Cannot roll back a connection";
 	public static final String ERR_WHILE_EXECUTING_COMMAND = "Error was occured in execute method";
-
+	public static final String ERR_CANOT_FIND_ORDER_BY_ID = "Cannot find an order by its id";
+	public static final String ERR_CANNOT_OBTAIN_ORDER_ITEMS = "Cannot obtain order items from database";
 	// Warning messages
+
 	public static final String WARNING_PRODUCT_ALTEADY_EXISTS = "Product with such name are already exist";
 	public static final String WARNING_NO_SUCH_CATEGORY = "There is no category with such name in the system.";
 	public static final String WARNING_EMPTY_FIELDS = "One or more of required fields are empty";

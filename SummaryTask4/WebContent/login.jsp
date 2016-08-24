@@ -6,9 +6,7 @@
 <%@include file="/jspf/head.jspf"%>
 <body>
 	<div align="center">
-		<c:if test="${not empty message}">
-			${message}
-		</c:if>
+		<h2>This is a login page</h2>
 		<form action="controller" method="post">
 			<input type="hidden" name="command" value="processLogin">
 			<table>
@@ -27,6 +25,10 @@
 			</table>
 			<br> <input type="submit" value="Login">
 		</form>
+		<br>
+		<c:if test="${not empty message}">
+			<p style="color: red;">${message}</p>
+		</c:if>
 	</div>
 </body>
 </html>

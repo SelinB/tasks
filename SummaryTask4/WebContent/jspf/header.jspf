@@ -3,7 +3,9 @@
 <html>
 <div>
 	<div align="center">
-		<a href="main.jsp">LOGO</a>
+		<h1>
+			<a href="main.jsp">HERE WILL BE A LOGO</a>
+		</h1>
 	</div>
 	<div align="right">
 		<c:if test="${empty user}">
@@ -14,11 +16,14 @@
 		</c:if>
 	</div>
 </div>
+<div align="right">
+	<%@include file="cart.jspf"%>
+</div>
 <div align="center">
 	<table>
 		<tr>
 			<td><a href="main.jsp">Home</a></td>
-<!-- 			<td><a href="shop.jsp">Shop</a></td> -->
+			<!-- 			<td><a href="shop.jsp">Shop</a></td> -->
 			<td><a href="controller?command=displayProducts">Shop</a></td>
 			<td><a href="about.jsp">About</a></td>
 			<td><a href="faq.jsp">FAQ</a></td>
