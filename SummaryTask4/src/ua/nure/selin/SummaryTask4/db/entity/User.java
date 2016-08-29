@@ -32,7 +32,8 @@ public class User extends Entity {
 
 	private int roleId;
 
-	private int currentOrderId;
+	// private int currentOrderId;
+	private Integer currentOrderId;
 
 	public String getLogin() {
 		return login;
@@ -114,19 +115,28 @@ public class User extends Entity {
 		this.roleId = roleId;
 	}
 
-	public int getCurrentOrderId() {
+	// public int getCurrentOrderId() {
+	// return currentOrderId;
+	// }
+	//
+	// public void setCurrentOrderId(int currentOrderId) {
+	// this.currentOrderId = currentOrderId;
+	// }
+
+	public Integer getCurrentOrderId() {
 		return currentOrderId;
 	}
 
-	public void setCurrentOrderId(int currentOrderId) {
+	public void setCurrentOrderId(Integer currentOrderId) {
 		this.currentOrderId = currentOrderId;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id: " + getId() + ", login: " + login + ", password: " + password + ", email: " + email +", firstName: " + firstName
-				+ ", lastName: " + lastName + ", phone: " + phone + ", address: " + address + ", gender:" + gender
-				+ ", status: " + status + ", roleId: " + roleId + ", currentOrderId: " + currentOrderId + "];";
+		return "User [id: " + getId() + ", login: " + login + ", password: " + password + ", email: " + email
+				+ ", firstName: " + firstName + ", lastName: " + lastName + ", phone: " + phone + ", address: "
+				+ address + ", gender:" + gender + ", status: " + status + ", roleId: " + roleId + ", currentOrderId: "
+				+ currentOrderId + "];";
 	}
 
 }

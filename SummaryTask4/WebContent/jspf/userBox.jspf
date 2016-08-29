@@ -1,6 +1,0 @@
-<%@include file="directive/page.jspf"%>
-<%@include file="directive/taglib.jspf"%>
-<html>
-	<h2>Hello, ${user.getLogin()}</h2>
-	<h3><a href="controller?command=processLogout">Logout</a></h3>
-</html>

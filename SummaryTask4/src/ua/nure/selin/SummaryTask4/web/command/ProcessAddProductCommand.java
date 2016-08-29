@@ -18,7 +18,7 @@ import ua.nure.selin.SummaryTask4.db.util.DBUtil;
 import ua.nure.selin.SummaryTask4.exception.AppException;
 
 /**
- * Command that processing addition of a product to a database.
+ * Processes addition of a product to a database.
  * 
  * @author B.Selin
  *
@@ -37,8 +37,9 @@ public class ProcessAddProductCommand extends Command {
 
 		LOG.debug(Messages.SUCCESS_COMMAND_STARTED + getClass().getSimpleName());
 
-		CommandResult result = new CommandResult(Path.ADMIN_PAGE);
+		CommandResult result = new CommandResult(Path.PAGE_ADMIN);
 		result.setTransitionForward();
+		request.setAttribute("action", "addProduct");
 
 		DAOFactory.setDaoFactoryFCN(DBUtil.MYSQL_DAO_FACTORY_FCN);
 		DAOFactory daoFactory = DAOFactory.getInstance();
@@ -101,6 +102,7 @@ public class ProcessAddProductCommand extends Command {
 
 		product = productDAO.findProductByName(name);
 
+		request.removeAttribute("action");
 		result.setDestinationURL(Path.COMMAND_VIEW_ADD_PRODUCT);
 		result.setTransitionRedirect();
 		return result;

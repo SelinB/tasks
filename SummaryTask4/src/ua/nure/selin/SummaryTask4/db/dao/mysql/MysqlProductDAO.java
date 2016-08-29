@@ -19,7 +19,7 @@ import ua.nure.selin.SummaryTask4.db.util.DBUtil;
 import ua.nure.selin.SummaryTask4.exception.DBException;
 
 /**
- * Implementation of ProductDAO for Mysql database.
+ * Implementation of the ProductDAO for a Mysql database.
  * 
  * @author B.Selin
  *
@@ -200,6 +200,61 @@ public class MysqlProductDAO implements ProductDAO {
 			DBUtil.close(con);
 			DBUtil.close(pstmt);
 		}
+		return result;
+	}
+
+	@Override
+	public boolean deleteProduct(int productId) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_DELETE_PRODUCT);
+			pstmt.setInt(1, productId);
+			pstmt.executeUpdate();
+			con.commit();
+			result = true;
+		} catch (SQLException e) {
+			DBUtil.rollBack(con);
+			LOG.error(Messages.ERR_CANNOT_DELETE_PRODUCT, e);
+			throw new DBException(Messages.ERR_CANNOT_DELETE_PRODUCT, e);
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(pstmt);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean updateProduct(Product product) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		int counter = 1;
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_UPDATE_PRODUCT);
+			pstmt.setString(counter++, product.getName());
+			pstmt.setInt(counter++, product.getPrice());
+			pstmt.setInt(counter++, product.getStock());
+			pstmt.setDate(counter++, product.getManufactoryDate());
+			pstmt.setString(counter++, product.getSize());
+			pstmt.setString(counter++, product.getColor());
+			pstmt.setString(counter++, product.getImageSource());
+			pstmt.setString(counter++, product.getDescription());
+			pstmt.setInt(counter++, product.getCategoryId());
+			pstmt.setInt(counter++, product.getId());
+			pstmt.executeUpdate();
+			con.commit();
+			result = true;
+		} catch (SQLException e) {
+			DBUtil.rollBack(con);
+			LOG.error(Messages.ERR_CANNOT_UPDATE_PRODUCT, e);
+			throw new DBException(Messages.ERR_CANNOT_UPDATE_PRODUCT, e);
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(pstmt);
+		}
+
 		return result;
 	}
 

@@ -7,8 +7,7 @@ import ua.nure.selin.SummaryTask4.constant.Path;
 import ua.nure.selin.SummaryTask4.exception.AppException;
 
 /**
- * Displays adding a user to a database operation. Part of PRG pattern - secures
- * from forms resubmit.
+ * Displays adding a user to a database operation.
  * 
  * @author B.Selin
  *
@@ -19,7 +18,7 @@ public class ViewRegistrationCommand extends Command {
 
 	@Override
 	public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
-		CommandResult result = new CommandResult(Path.REGISTRATION_SUCCESS);
+		CommandResult result = new CommandResult(Path.PAGE_MAIN);
 		result.setTransitionForward();
 		return result;
 	}

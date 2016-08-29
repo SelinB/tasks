@@ -2,6 +2,7 @@ package ua.nure.selin.SummaryTask4.db.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import ua.nure.selin.SummaryTask4.db.entity.Order;
 import ua.nure.selin.SummaryTask4.db.status.OrderStatus;
@@ -35,6 +36,22 @@ public interface OrderDAO {
 	 * @throws DBException
 	 */
 	public abstract boolean addOrder(Order order) throws DBException;
+
+	/**
+	 * Finds all orders in a database.
+	 * 
+	 * @return List of Order objects.
+	 * @throws DBException
+	 */
+	public List<Order> getAllOrders() throws DBException;
+
+	/**
+	 * Finds all orders for a certain user in a database.
+	 * 
+	 * @return List of Order objects.
+	 * @throws DBException
+	 */
+	public List<Order> getAllOrdersByUserId(int userId) throws DBException;
 
 	/**
 	 * Updates an order.

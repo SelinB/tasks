@@ -18,6 +18,8 @@ public class Order extends Entity {
 
 	private int totalPrice;
 
+	private String paymentInfo;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -42,10 +44,18 @@ public class Order extends Entity {
 		this.totalPrice = totalPrice;
 	}
 
+	public String getPaymentInfo() {
+		return paymentInfo;
+	}
+
+	public void setPaymentInfo(String paymentInfo) {
+		this.paymentInfo = paymentInfo;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id: " + getId() + ", userId: " + userId + ", status: " + status + ", totalPrice: " + totalPrice
-				+ "]";
+				+ ", paymantInfo: " + paymentInfo + "]";
 	}
 
 }

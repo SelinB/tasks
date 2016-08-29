@@ -7,6 +7,8 @@ import ua.nure.selin.SummaryTask4.db.dao.OrderItemDAO;
 import ua.nure.selin.SummaryTask4.db.dao.ProductDAO;
 import ua.nure.selin.SummaryTask4.db.dao.RoleDAO;
 import ua.nure.selin.SummaryTask4.db.dao.UserDAO;
+import ua.nure.selin.SummaryTask4.db.dao.UserOrderBeanDAO;
+import ua.nure.selin.SummaryTask4.db.dao.AdminOrderBeanDAO;
 import ua.nure.selin.SummaryTask4.exception.DBException;
 
 /**
@@ -49,6 +51,16 @@ public class MysqlDAOFactory extends DAOFactory {
 	@Override
 	public OrderDAO getOrderDAO() throws DBException {
 		return new MysqlOrderDAO();
+	}
+
+	@Override
+	public AdminOrderBeanDAO getAdminOrderBeanDAO() throws DBException {
+		return new MysqlAdminOrderBeanDAO();
+	}
+
+	@Override
+	public UserOrderBeanDAO getUserOrderBeanDAO() throws DBException {
+		return new MysqlUserOrderBeanDAO();
 	}
 
 }

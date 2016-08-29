@@ -39,11 +39,12 @@ public class ProcessProductsCommand extends Command {
 	public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
 
 		LOG.debug(Messages.SUCCESS_COMMAND_STARTED + getClass().getSimpleName());
-	
-		CommandResult result = new CommandResult(Path.SHOP_PAGE);
-		result.setTransitionForward();
 
-		List<Product> productsList;
+		CommandResult result = new CommandResult(Path.PAGE_SHOP);
+		if (request.getParameter("source") != null && request.getParameter("source").equals("ADMIN")) {
+			result.setDestinationURL(Path.PAGE_ADMIN + "?action=listProducts");
+		}
+		result.setTransitionForward();
 
 		HttpSession session = request.getSession();
 		LOG.trace(Messages.TRACE_CURRENT_SESSION + session);
@@ -53,8 +54,6 @@ public class ProcessProductsCommand extends Command {
 
 		String currentCategory = request.getParameter("categoryName");
 		LOG.trace(Messages.TRACE_REQUES_PARAMETER + currentCategory);
-		String categoryIdAsString = request.getParameter("categoryId");
-		LOG.trace(Messages.TRACE_REQUES_PARAMETER + categoryIdAsString);
 		String sortMethod = request.getParameter("sortMethod");
 		LOG.trace(Messages.TRACE_REQUES_PARAMETER + sortMethod);
 
@@ -65,9 +64,11 @@ public class ProcessProductsCommand extends Command {
 
 		ProductDAO productDAO = daoFactory.getProductDAO();
 
-		if (!isParamEmpty(categoryIdAsString)) {
-			int categoryId = Integer.parseInt(categoryIdAsString);
-			productsList = productDAO.getAllProductsByCategoryId(categoryId);
+		List<Product> productsList;
+
+		if (!isParamEmpty(currentCategory)) {
+			Category category = categoryDAO.findCategoryByName(currentCategory);
+			productsList = productDAO.getAllProductsByCategoryId(category.getId());
 		} else {
 			productsList = productDAO.getAllProducts();
 		}

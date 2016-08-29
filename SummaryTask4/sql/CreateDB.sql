@@ -1,5 +1,7 @@
 USE eshop;
 
+ALTER DATABASE eshop CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 SET foreign_key_checks = 0;
 DROP TABLE roles;
 DROP TABLE users;
@@ -46,9 +48,10 @@ stock INT NOT NULL,
 manufactoring_date DATE NOT NULL,
 size VARCHAR(255),
 color VARCHAR(255),
-img_src TEXT,
+img_src VARCHAR(500) default 'img/no_image.png',
 description TEXT,
 category_id INT NOT NULL,
+status VARCHAR(255) default 'EXISTS',
 PRIMARY KEY (id),
 FOREIGN KEY (category_id) REFERENCES categories (id)
 );
@@ -57,6 +60,7 @@ CREATE TABLE orders(
 id INT NOT NULL AUTO_INCREMENT,
 status VARCHAR(255) NOT NULL DEFAULT 'PROCESSING',
 total_price INT NOT NULL DEFAULT 0,
+payment_info VARCHAR(255),
 user_id INT NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users (id)
@@ -69,7 +73,7 @@ CREATE TABLE order_items(
 id INT NOT NULL AUTO_INCREMENT,
 product_id INT NOT NULL,
 products_count INT NOT NULL DEFAULT 1,
-price INT NOT NULL,
+item_price INT NOT NULL,
 order_id INT NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (product_id) REFERENCES products (id),

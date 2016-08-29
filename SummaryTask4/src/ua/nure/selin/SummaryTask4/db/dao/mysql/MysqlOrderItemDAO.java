@@ -59,7 +59,7 @@ public class MysqlOrderItemDAO implements OrderItemDAO {
 		OrderItem item = new OrderItem();
 		item.setId(rs.getInt(Fields.ENTITY_ID));
 		item.setOrderId(rs.getInt(Fields.ORDER_ITEM_ORDER_ID));
-		item.setPrice(rs.getInt(Fields.ORDER_ITEM__PRICE));
+		item.setPrice(rs.getInt(Fields.ORDER_ITEM_PRICE));
 		item.setProductId(rs.getInt(Fields.ORDER_ITEM_PRODUCT_ID));
 		item.setProductsCount(rs.getInt(Fields.ORDER_ITEM_PRODUCTS_COUNT));
 		return item;
@@ -86,6 +86,31 @@ public class MysqlOrderItemDAO implements OrderItemDAO {
 		} finally {
 			DBUtil.close(con);
 			DBUtil.close(pstmt);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean updateOrderItem(OrderItem item) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		int counter = 1;
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_UPDATE_ORDER_ITEM);
+			pstmt.setInt(counter++, item.getProductsCount());
+			pstmt.setInt(counter++, item.getPrice());
+			pstmt.setInt(counter++, item.getId());
+			pstmt.executeUpdate();
+			con.commit();
+			result = true;
+		} catch (SQLException e) {
+			DBUtil.rollBack(con);
+			LOG.error(Messages.ERR_CANNOT_UPDATE_ITEM, e);
+			throw new DBException(Messages.ERR_CANNOT_UPDATE_ITEM, e);
+		} finally {
+			DBUtil.close(pstmt);
+			DBUtil.close(con);
 		}
 		return result;
 	}

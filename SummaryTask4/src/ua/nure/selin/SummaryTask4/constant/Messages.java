@@ -9,6 +9,8 @@ package ua.nure.selin.SummaryTask4.constant;
 public final class Messages {
 
 	// Trace messages
+	public static final String TRACE_COOKIE_FOUNDED = "Value of a cookie that has been founded in a response: ";
+	public static final String TRACE_COOKIE_CHANGED = "Cookie had initialized or changed. Curren cookie value: ";
 	public static final String TRACE_CURRENT_SESSION = "Current session object is: ";
 	public static final String TRACE_DAO_OBJECT_CREATED = "DAOFactory object has been created: ";
 	public static final String TRACE_CONTROLLER_FINISHED = "Controller has finished it's work.";
@@ -31,7 +33,16 @@ public final class Messages {
 	public static final String SUCCESS_CONNECTION_ROLLED_BACK = "Connection has been rolled back";
 
 	// Error messages
-	public static final String ERR_CANNOT_UPDATE_ORDER= "Cannot update a order";
+	public static final String ERR_CANNOT_FIND_ALL_ORDERS_BY_USER_ID = "Cannot obtain all orders by user id";
+	public static final String ERR_CANNOT_UPDATE_ITEM = "Cannot update an order_item";
+	public static final String ERR_CANNOT_UPDATE_PRODUCT = "Cannot update a product";
+	public static final String ERR_CANNOT_DELETE_PRODUCT = "Cannot change stauts of product on 'DELETED'";
+	public static final String ERR_PASSWORD_HASHING = "Cannot generate a hash for a password";
+	public static final String ERR_CANNOT_OBRAIN_ADMIN_ORDER_BEANS = "Cannot obtain AdminOrderBean from users and orders tables from a database";
+	public static final String ERR_CANNOT_OBRAIN_USER_ORDER_BEANS = "Cannot obtain UserOrderBean from products and order_items tables from a database";
+	public static final String ERR_CANNOT_OBRAIN_ORDERS = "Cannot obtain orders from a database";
+	public static final String ERR_CANNOT_OBRAIN_USERS = "Cannot obtain users from a database";
+	public static final String ERR_CANNOT_UPDATE_ORDER = "Cannot update a order";
 	public static final String ERR_CANNOT_UPDATE_USER = "Cannot update a user";
 	public static final String ERR_CANNOT_FIND_ORDER_BY_STATUS_AND_SUER_ID = "Cannot find an order by its status and user id";
 	public static final String ERR_CANNOT_INSERT_ORDER = "Cannot add an order to a database";
@@ -47,6 +58,7 @@ public final class Messages {
 	public static final String ERR_CANOT_FIND_PRODUCT_BY_CATEGORY_ID = "Cannot find a product by its category id";
 	public static final String ERR_CANNOT_CREATE_USER = "Cannot add a user to a database";
 	public static final String ERR_CANNOT_ADD_ORDER_ITEM = "Cannot add orderItem to a database";
+	public static final String ERR_CANNOT_OBTAIN_USER_BY_ID = "Cannot find a user by its id";
 	public static final String ERR_CANNOT_OBTAIN_USER_BY_LOGIN = "Cannot find a user by its login";
 	public static final String ERR_CANNOT_FIND_COMMAND = "Cannot find such command in the ComandContainer: ";
 	public static final String ERR_CANNOT_OBTAIN_CONNECTION = "Cannot obtain a connection from the pool";
@@ -59,12 +71,14 @@ public final class Messages {
 	public static final String ERR_WHILE_EXECUTING_COMMAND = "Error was occured in execute method";
 	public static final String ERR_CANOT_FIND_ORDER_BY_ID = "Cannot find an order by its id";
 	public static final String ERR_CANNOT_OBTAIN_ORDER_ITEMS = "Cannot obtain order items from database";
-	// Warning messages
 
+	// Warning messages
+	public static final String WARNING_PASSWORDS_NOT_MATCHES = "Passwodrs are not matches. Please, cheack you input and try again.";
 	public static final String WARNING_PRODUCT_ALTEADY_EXISTS = "Product with such name are already exist";
 	public static final String WARNING_NO_SUCH_CATEGORY = "There is no category with such name in the system.";
 	public static final String WARNING_EMPTY_FIELDS = "One or more of required fields are empty";
 	public static final String WARNING_NO_SUCH_USER = "There is no user with such login and password in the system. Try again.";
+	public static final String WARNING_USER_BLOCKED = "Unfortunately, user with such login has been blocked";
 	public static final String WARNING_USER_ALREADY_EXISTS = "User with such login are already exist";
 
 }

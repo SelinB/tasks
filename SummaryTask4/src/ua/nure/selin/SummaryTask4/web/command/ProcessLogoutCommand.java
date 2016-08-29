@@ -30,7 +30,7 @@ public class ProcessLogoutCommand extends Command {
 
 		LOG.debug(Messages.SUCCESS_COMMAND_STARTED + getClass().getSimpleName());
 
-		CommandResult result = new CommandResult(Path.MAIN_PAGE);
+		CommandResult result = new CommandResult(Path.PAGE_MAIN);
 		result.setTransitionForward();
 
 		HttpSession session = request.getSession(false);

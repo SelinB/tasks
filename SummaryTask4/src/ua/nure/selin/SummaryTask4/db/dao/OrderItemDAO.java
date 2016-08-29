@@ -23,7 +23,7 @@ public interface OrderItemDAO {
 	 * @return List of OrderItem objects.
 	 * @throws DBException
 	 */
-	public abstract List<OrderItem> getAllOrderItemsByOrder(int orderId) throws DBException;
+	public List<OrderItem> getAllOrderItemsByOrder(int orderId) throws DBException;
 
 	/**
 	 * Inserts order item into database.
@@ -34,7 +34,7 @@ public interface OrderItemDAO {
 	 *         or <b>false</b> if not.
 	 * @throws DBException
 	 */
-	public abstract boolean addOrderItem(OrderItem item) throws DBException;
+	public boolean addOrderItem(OrderItem item) throws DBException;
 
 	/**
 	 * Parses all OrderItem fields from database to OrderItem object.
@@ -44,5 +44,16 @@ public interface OrderItemDAO {
 	 * @return OrderItem object.
 	 * @throws SQLException
 	 */
-	public abstract OrderItem parseOrderItem(ResultSet rs) throws SQLException;
+	public OrderItem parseOrderItem(ResultSet rs) throws SQLException;
+
+	/**
+	 * Updates an orderItem.
+	 * 
+	 * @param orderItem
+	 *            to update.
+	 * @return <b>true</b> if orderItem has been successfully updated or
+	 *         <b>false</b> if not.
+	 * @throws DBException
+	 */
+	public boolean updateOrderItem(OrderItem item) throws DBException;
 }

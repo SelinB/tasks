@@ -2,6 +2,7 @@ package ua.nure.selin.SummaryTask4.db.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import ua.nure.selin.SummaryTask4.db.entity.User;
 import ua.nure.selin.SummaryTask4.exception.DBException;
@@ -13,6 +14,16 @@ import ua.nure.selin.SummaryTask4.exception.DBException;
  *
  */
 public interface UserDAO {
+
+	/**
+	 * Finds user in a database by its id.
+	 * 
+	 * @param id
+	 *            of a user to find.
+	 * @return User object.
+	 * @throws DBException
+	 */
+	public User findUserById(int id) throws DBException;
 
 	/**
 	 * Finds user in a database by its login.
@@ -55,4 +66,13 @@ public interface UserDAO {
 	 * @throws DBException
 	 */
 	public boolean updateUser(User user) throws DBException;
+
+	/**
+	 * Finds all users in a database.
+	 * 
+	 * @return List of User objects.
+	 * @throws DBException
+	 */
+	public List<User> getAllUsers() throws DBException;
+
 }

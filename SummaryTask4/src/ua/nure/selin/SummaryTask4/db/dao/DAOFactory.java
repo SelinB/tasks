@@ -35,6 +35,13 @@ public abstract class DAOFactory {
 	 */
 	private static String daoFactoryFCN;
 
+	/**
+	 * Sets Full Class Name of a current implementation of the DAOFactory.
+	 * 
+	 * @param daoFactoryFCN
+	 *            Full Class Name of a current implementation of the DAOFactory
+	 *            to set.
+	 */
 	public static void setDaoFactoryFCN(String daoFactoryFCN) {
 		instance = null;
 		DAOFactory.daoFactoryFCN = daoFactoryFCN;
@@ -113,5 +120,23 @@ public abstract class DAOFactory {
 	 * @throws DBException
 	 */
 	public abstract OrderDAO getOrderDAO() throws DBException;
+
+	/**
+	 * Creates AdminOrderBeanDAO object of a certain implementation of
+	 * DAOFactory.
+	 * 
+	 * @return AdminOrderBeanDAO object.
+	 * @throws DBException
+	 */
+	public abstract AdminOrderBeanDAO getAdminOrderBeanDAO() throws DBException;
+
+	/**
+	 * Creates UserOrderBeanDAO object of a certain implementation of
+	 * DAOFactory.
+	 * 
+	 * @return UserOrderBeanDAO object.
+	 * @throws DBException
+	 */
+	public abstract UserOrderBeanDAO getUserOrderBeanDAO() throws DBException;
 
 }

@@ -84,4 +84,26 @@ public interface ProductDAO {
 	 */
 	public boolean addProduct(Product product) throws DBException;
 
+	/**
+	 * Deletes a product from a database.
+	 * 
+	 * @param id
+	 *            of a product to delete.
+	 * @return <b>true</b> if product has been successfully deleted from
+	 *         database or <b>false</b> if not.
+	 * @throws DBException
+	 */
+	public boolean deleteProduct(int productId) throws DBException;
+
+	/**
+	 * Updates a product.
+	 * 
+	 * @param product
+	 *            to update.
+	 * @return <b>true</b> if product has been successfully updated or
+	 *         <b>false</b> if not.
+	 * @throws DBException
+	 */
+	public boolean updateProduct(Product product) throws DBException;
+
 }

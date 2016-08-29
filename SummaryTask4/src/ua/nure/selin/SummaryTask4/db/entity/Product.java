@@ -2,6 +2,8 @@ package ua.nure.selin.SummaryTask4.db.entity;
 
 import java.sql.Date;
 
+import ua.nure.selin.SummaryTask4.db.status.ProductStatus;
+
 /**
  * Product entity.
  * 
@@ -29,6 +31,8 @@ public class Product extends Entity {
 	private String description;
 
 	private int categoryId;
+
+	private ProductStatus status;
 
 	public String getName() {
 		return name;
@@ -102,12 +106,20 @@ public class Product extends Entity {
 		this.categoryId = categoryId;
 	}
 
+	public ProductStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ProductStatus status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id: " + getId() + ", name: " + name + ", price: " + price + ", stock: " + stock
 				+ ", manufactoringDate: " + manufactoryDate + ", size: " + size + ", color: " + color
 				+ ", imageSource: " + imageSource + ", description: " + description + ", categoryId: " + categoryId
-				+ "]";
+				+ ", status: " + status + "]";
 	}
 
 }

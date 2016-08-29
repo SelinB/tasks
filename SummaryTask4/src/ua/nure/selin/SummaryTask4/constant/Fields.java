@@ -44,12 +44,30 @@ public final class Fields {
 	// order_items table fields
 	public static final String ORDER_ITEM_PRODUCT_ID = "product_id";
 	public static final String ORDER_ITEM_PRODUCTS_COUNT = "products_count";
-	public static final String ORDER_ITEM__PRICE = "price";
+	public static final String ORDER_ITEM_PRICE = "item_price";
 	public static final String ORDER_ITEM_ORDER_ID = "order_id";
 
 	// orders table fields
 	public static final String ORDER_USER_ID = "user_id";
 	public static final String ORDER_STATUS = "status";
+	public static final String ORDER_PAYMENT_INFO = "payment_info";
 	public static final String ORDER_TOTAL_PRICE = "total_price";
 
+	// admin_order_beans fields
+	public static final String ADMIN_ORDER_BEAN_ORDER_ID = "id";
+	public static final String ADMIN_ORDER_BEAN_USER_LOGIN = "login";
+	public static final String ADMIN_ORDER_BEAN_USER_FIRST_NAME = "first_name";
+	public static final String ADMIN_ORDER_BEAN_USER_LAST_NAME = "last_name";
+	public static final String ADMIN_ORDER_BEAN_USER_EMAIL = "email";
+	public static final String ADMIN_ORDER_BEAN_ORDER_PRICE = "total_price";
+	public static final String ADMIN_ORDER_BEAN_ORDER_STATUS = "status";
+	public static final String ADMIN_ORDER_BEAN_ORDER_PAMENT_INFO = "payment_info";
+
+	// user_order_bean fields
+	public static final String USER_ORDER_BEAN_ORDER_STATUS = "status";
+	public static final String USER_ORDER_BEAN_ORDER_PAYMENT_INFO = "payment_info";
+	public static final String USER_ORDER_BEAN_ORDER_ITEM_PRODUCTS_COUNT = "products_count";
+	public static final String USER_ORDER_BEAN_ORDER_ITEM_PRICE = "item_price";
+	public static final String USER_ORDER_BEAN_PRODUCT_NAME = "name";
+	public static final String USER_ORDER_BEAN_PRODUCT_IMAGE = "img_src";
 }

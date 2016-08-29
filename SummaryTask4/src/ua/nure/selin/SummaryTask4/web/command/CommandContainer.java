@@ -31,6 +31,19 @@ public class CommandContainer {
 	 */
 	static {
 		// PUT COMMANDS HERE
+		commands.put("navigator", new CommonNavigatorCommand());
+		commands.put("changeOrderStatus", new AdminChangeOrderStatusCommand());
+		commands.put("findAllOrders", new ClientDisplayOrdersCommand());
+		commands.put("viewPlaceOrder", new ViewPlaceOrderCommand());
+		commands.put("choseAction", new CommonChoseActionCommand());
+		commands.put("placeOrder", new CommonPlaceOrderCommand());
+		commands.put("modifyProduct", new AdminModifyProductCommand());
+		commands.put("deleteProduct", new AdminDeleteProductCommand());
+		commands.put("admDisplayOrders", new AdminDisplayOrdersCommand());
+		commands.put("changeUserStatus", new AdminChangeUserStatusCommand());
+		commands.put("processShowUsers", new AdminShowUsersCommand());
+		commands.put("processAdminAction", new AdminChoseActionCommand());
+		commands.put("processUserOffice", new ProcessUserOfficeCommand());
 		commands.put("viewAddToCart", new ViewAddToCartCommand());
 		commands.put("processAddToCart", new ProcessAddToCartCommand());
 		commands.put("processCartNotAuthorized", new ProcessAddToCartNotAuthorizedCommand());

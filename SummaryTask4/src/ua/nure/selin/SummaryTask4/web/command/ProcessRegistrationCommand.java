@@ -34,7 +34,7 @@ public class ProcessRegistrationCommand extends Command {
 
 		LOG.debug(Messages.SUCCESS_COMMAND_STARTED + getClass().getSimpleName());
 
-		CommandResult result = new CommandResult(Path.REGISTRATION_PAGE);
+		CommandResult result = new CommandResult(Path.PAGE_REGISTRATION);
 		result.setTransitionForward();
 
 		HttpSession session = request.getSession();
@@ -45,7 +45,8 @@ public class ProcessRegistrationCommand extends Command {
 
 		String login = request.getParameter("login");
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password1 = request.getParameter("password1");
+		String password2 = request.getParameter("password2");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String phone = request.getParameter("phone");
@@ -54,15 +55,20 @@ public class ProcessRegistrationCommand extends Command {
 
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + login);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + email);
-		LOG.info(Messages.TRACE_REQUES_PARAMETER + password);
+		LOG.info(Messages.TRACE_REQUES_PARAMETER + password1);
+		LOG.info(Messages.TRACE_REQUES_PARAMETER + password2);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + firstName);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + lastName);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + phone);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + address);
 		LOG.info(Messages.TRACE_REQUES_PARAMETER + gender);
 
-		if (isParamsEmpty(login, password) || isParamsEmpty(email, firstName) || isParamEmpty(lastName)) {
+		if (isParamsEmpty(login, email) || isParamsEmpty(firstName, lastName) || isParamsEmpty(password1, password2)) {
 			request.setAttribute("message", Messages.WARNING_EMPTY_FIELDS);
+			return result;
+		}
+		if (!password1.equals(password2)) {
+			request.setAttribute("message", Messages.WARNING_PASSWORDS_NOT_MATCHES);
 			return result;
 		}
 
@@ -77,7 +83,7 @@ public class ProcessRegistrationCommand extends Command {
 		{
 			user = new User();
 			user.setLogin(login);
-			user.setPassword(password);
+			user.setPassword(generateHash(password1));
 			user.setEmail(email);
 			user.setFirstName(firstName);
 			user.setLastName(lastName);

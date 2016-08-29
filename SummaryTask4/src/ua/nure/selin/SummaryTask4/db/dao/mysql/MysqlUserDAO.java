@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -56,6 +59,29 @@ public class MysqlUserDAO implements UserDAO {
 	}
 
 	@Override
+	public User findUserById(int id) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_FIND_USER_BY_ID);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				user = parseUser(rs);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			LOG.error(Messages.ERR_CANNOT_OBTAIN_USER_BY_ID, e);
+			throw new DBException(Messages.ERR_CANNOT_OBTAIN_USER_BY_ID, e);
+		} finally {
+			DBUtil.close(con, pstmt, rs);
+		}
+		return user;
+	}
+
+	@Override
 	public boolean updateUser(User user) throws DBException {
 		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -72,7 +98,8 @@ public class MysqlUserDAO implements UserDAO {
 			pstmt.setString(counter++, user.getAddress());
 			pstmt.setString(counter++, user.getGender());
 			pstmt.setString(counter++, String.valueOf(user.getStatus()));
-			pstmt.setInt(counter++, user.getCurrentOrderId());
+			pstmt.setObject(counter++, user.getCurrentOrderId());
+//			pstmt.setInt(counter++, user.getCurrentOrderId());
 			pstmt.setInt(counter++, user.getId());
 			pstmt.executeUpdate();
 			con.commit();
@@ -129,8 +156,33 @@ public class MysqlUserDAO implements UserDAO {
 		user.setGender(rs.getString(Fields.USER_GENDER));
 		user.setStatus(UserStatus.valueOf(rs.getString(Fields.USER_STATUS)));
 		user.setRoleId(rs.getInt(Fields.USER_ROLE_ID));
-		user.setCurrentOrderId(rs.getInt(Fields.USER_CURRENT_ORDER_ID));
+		user.setCurrentOrderId((Integer) rs.getObject(Fields.USER_CURRENT_ORDER_ID));
+//		user.setCurrentOrderId(rs.getInt(Fields.USER_CURRENT_ORDER_ID));
 		return user;
+	}
+
+	@Override
+	public List<User> getAllUsers() throws DBException {
+		List<User> users = new ArrayList<User>();
+		Connection con = DBUtil.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(DBCommands.SQL_FIND_ALL_USERS);
+			while (rs.next()) {
+				User user = parseUser(rs);
+				users.add(user);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			LOG.error(Messages.ERR_CANNOT_OBRAIN_USERS, e);
+			throw new DBException(Messages.ERR_CANNOT_OBRAIN_USERS, e);
+		} finally {
+			DBUtil.close(con, stmt, rs);
+		}
+
+		return users;
 	}
 
 }

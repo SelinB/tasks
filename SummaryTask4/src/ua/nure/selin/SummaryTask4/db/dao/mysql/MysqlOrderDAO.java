@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -62,6 +65,7 @@ public class MysqlOrderDAO implements OrderDAO {
 		order.setUserId(rs.getInt(Fields.ORDER_USER_ID));
 		order.setTotalPrice(rs.getInt(Fields.ORDER_TOTAL_PRICE));
 		order.setStatus(OrderStatus.valueOf(rs.getString(Fields.ORDER_STATUS)));
+		order.setPaymentInfo(rs.getString(Fields.ORDER_PAYMENT_INFO));
 		return order;
 	}
 
@@ -97,6 +101,7 @@ public class MysqlOrderDAO implements OrderDAO {
 			pstmt.setString(counter++, String.valueOf(order.getStatus()));
 			pstmt.setInt(counter++, order.getUserId());
 			pstmt.setInt(counter++, order.getTotalPrice());
+			pstmt.setString(counter++, order.getPaymentInfo());
 			pstmt.setInt(counter, order.getId());
 			pstmt.executeUpdate();
 			con.commit();
@@ -135,6 +140,54 @@ public class MysqlOrderDAO implements OrderDAO {
 			DBUtil.close(con, pstmt, rs);
 		}
 		return order;
+	}
+
+	@Override
+	public List<Order> getAllOrders() throws DBException {
+		Connection con = DBUtil.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<Order> orders = new ArrayList<Order>();
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(DBCommands.SQL_FIND_ALL_ORDERS);
+			while (rs.next()) {
+				Order order = parseOrder(rs);
+				orders.add(order);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			DBUtil.rollBack(con);
+			LOG.error(Messages.ERR_CANNOT_OBRAIN_ORDERS, e);
+			throw new DBException(Messages.ERR_CANNOT_OBRAIN_ORDERS, e);
+		} finally {
+			DBUtil.close(con, stmt, rs);
+		}
+		return orders;
+	}
+
+	@Override
+	public List<Order> getAllOrdersByUserId(int userId) throws DBException {
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> orders = new ArrayList<Order>();
+		try {
+			pstmt = con.prepareStatement(DBCommands.SQL_FIND_ALL_ORDERS_BY_USER_ID);
+			pstmt.setInt(1, userId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Order order = parseOrder(rs);
+				orders.add(order);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			LOG.error(Messages.ERR_CANNOT_FIND_ALL_ORDERS_BY_USER_ID, e);
+			throw new DBException(Messages.ERR_CANNOT_FIND_ALL_ORDERS_BY_USER_ID, e);
+		} finally {
+			DBUtil.close(con, pstmt, rs);
+		}
+		return orders;
 	}
 
 }

@@ -30,25 +30,12 @@ public final class CommandResult {
 	 */
 	private String transitionMethod;
 
-	/**
-	 * Message to a user.
-	 */
-	private String message;
-
 	public CommandResult() {
 		// No operations
 	}
 
 	public CommandResult(String destinationURL) {
 		this.destinationURL = destinationURL;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public String getDestinationURL() {
